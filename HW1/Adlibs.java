@@ -5,7 +5,41 @@ package HW1;
 // Hint3: A sample story if you are lost can be as simple as "Hello! My name is ____, and I am ____, and my favorite  
 //        color is ___"
 public class Adlibs {
-    public  String story(String name, int age, String favoriteColor) {
-        return null;
+    
+    public static  String Story(String name, int age, String favoriteColor) {
+
+       return name + age + favoriteColor;  
+       
     }
-}
+
+	// public static char[] Story() {
+
+	// 	return null;
+	// }
+
+   
+    static String name = "Erebus";
+    static int age = 999999;
+    
+    static String favoriteColor = "Black and Purple";
+    static String story = "Hello! My name is " + name + ", and I am " + age + ", and my favorite color is " + favoriteColor + ".";
+
+
+    //System.out.println("Hello! My name is " + name + ", and I am " + age + ", and my favorite color is " + favoriteColor + ".")
+    
+
+
+    
+       
+       
+       //q: Syntax error on token ".", @ expected after this tokenJava(1610612967)
+        
+  
+       
+        
+    }
+
+
+
+
+
