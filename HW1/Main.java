@@ -12,6 +12,22 @@ public class Main {
     //Adlibs.StoryV();
     Adlibs.Story(Adlibs.name, Adlibs.age, Adlibs.favoriteColor);
     System.out.println(Adlibs.story);
+    System.out.println(" ");
+    
+    
+    Replace f  = new Replace();
+    System.out.println(f.replaceChar("  Bil the end of the time", 2, 'T'));
+    System.out.println(" ");
+
+    
+
+
+
+    
+
+
+
+    
     
     
 
