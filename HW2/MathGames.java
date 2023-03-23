@@ -10,6 +10,8 @@ System.out.println(" ");
 double a = 3;
 double b = 4;
 System.out.println("The hypotenuse of a triangle with sides a and b is " + pythagorean(a, b));
+System.out.println("The tip per person is " + calculateTipPerPerson(400, 4, 20));
+System.out.println(" ");
 
 
 // q: || = or right?
@@ -29,11 +31,7 @@ System.out.println("The hypotenuse of a triangle with sides a and b is " + pytha
     // Hypotenuse and Perpendicular and return the base.
     // Example 1: pythagorean(3,4) would return 5
 
-// Pythagorean theory
-// c = sqrt(a^2+b^2)
-// public static double pythagorean(double a, double b) {
-//     double c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
-//     return c;
+// 
 // }
 
 public static double pythagorean(double a, double b) {
@@ -49,7 +47,7 @@ public static double pythagorean(double a, double b) {
 }
 
 
-//q:how do I mak
+
 
     
     // Done : 2. Create a method that will calcuate my grade in the class. You can use the grade range as follows
@@ -111,7 +109,6 @@ public static char getLetterGrade(double grade) {
 }
 
 
-    } 
 
 
 
@@ -180,8 +177,18 @@ public static char getLetterGrade(double grade) {
     //      Hint 4: You will probably need to use the Math.ceil() method
     //      Example: tip(100, 4, 18) would return 5.0
 
+    // public static int tip(double totalBill, int numPeople, double tipPercentage) {
+    //     double tipAmount = totalBill * tipPercentage / 100.0;
+    //     double totalAmount = totalBill + tipAmount;
+    //     int perPersonAmount = (int) Math.ceil(totalAmount / numPeople);
+    //     return perPersonAmount;
+    public static int calculateTipPerPerson(double billAmount,  int numPeople, double tipPercentage) {
+        double tipAmount =  billAmount * tipPercentage / 100.0;
+        double tipPerPerson = tipAmount / numPeople;
+        return (int) Math.ceil(tipPerPerson);
+}
     
- 
+}
 
 
     // You can either create a tester class or put your code here
