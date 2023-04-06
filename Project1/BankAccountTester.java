@@ -35,11 +35,13 @@ public class BankAccountTester {
         // yourAccount.deposit(100);
         System.out.println(yourAccount.getbalance());
 
-        // int choice = BankAccount.menu();
+        //int choice = BankAccount.menu();
         // System.out.println(choice);
 
-        BankAccount.interact(yourAccount);
-        // BankAccount.interact(myAccount);
 
+        BankAccount.interact(yourAccount);
+        BankAccount.interact(myAccount);
+        
+        
     }
 }

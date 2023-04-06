@@ -28,8 +28,12 @@ import java.util.Scanner;
  * Name, SSN
  */
 
+import javax.security.auth.login.AccountExpiredException;
+
 public class BankAccount {
 
+    private static BankAccount myAccount;
+    private static BankAccount yourAccount;
     // Bank Account Parameters
     public String name;
     private double balance;
@@ -38,6 +42,11 @@ public class BankAccount {
     private int accountNumber;
     public double interestRate = 0.01;
     public int period = 4; // quarterly
+    public double overDraft;
+    // private boolean isSavings;
+    // public String savingsAccount;
+
+
 
     // Bank Account Constructor
     public BankAccount(String name, int ssn, double balance, int accountNumber, String dob) {
@@ -46,7 +55,16 @@ public class BankAccount {
         this.balance = balance;
         this.accountNumber = accountNumber;
         this.dob = dob;
+
+    
+
     }
+    
+
+    
+    
+    
+
 
     // Bank Account Constructor
     public BankAccount(String name, int ssn) {
@@ -87,6 +105,7 @@ public class BankAccount {
         this.name = name;
     }
 
+
     /*
      * Should only be used by during the creation of the account never after instead
      * see deposit and withdraw
@@ -112,8 +131,137 @@ public class BankAccount {
     }
 
     public void withdraw(double amount) {
+       this.balance -= amount;
+
+
+       }
+
+    public void overdraft(BankAccount bank, double amount ) {
+       if (this.balance - amount <= 0) {
+        System.out.println("Warning: This withdrawl will put you in the negatives");
+        System.out.println("Do you want to proceed?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+        Scanner scanner =  new Scanner(System.in);
+        int choice = scanner.nextInt();
+
+        if (choice == 1) {
+            double newBal = this.balance - amount - 35;
+            System.out.println("Withdrawl of $" + newBal + " successful. Overdraft fee of $35 charged");
+        } else if (choice == 2) {
+            System.out.println("Withdrawl cancelled");
+
+        
+        } 
+        
+       } else {
         this.balance -= amount;
+        
+        System.out.println("Withdrawl of $" + amount + " successful");
+
+       }
+        // withdrawal is within balance limit
+        
     }
+
+
+
+    
+    //*
+    // Scanner input = new Scanner(System.in);
+    //     int choice = input.nextInt();
+    // if (this.balance - amount <= 0) {
+    //     System.out.println("This will put you in the negatives. Proceed? If you proceed, a fee will be charged");
+    //     System.out.println("1. Yes");
+    //     System.out.println("2. No");
+        
+    // }else if (choice == 1) {
+    //     this.balance -= 35;
+    //     System.out.println("A $35 dollar fee will be attached to your account for the overdraft of your account");
+    
+
+    // } else if (choice == 2) {
+    //     System.out.println("Withdrawl cancelled");
+
+    // } else {
+    //     this.balance -= amount;
+    //     System.out.println("Withdrawl Successful");
+
+    // }*/
+
+        // int choice = menu()
+        // else if (choice == 1) { 
+
+    
+
+    //    double totalAmount = amount;
+    //     if (this.balance < amount) {
+    //         if (this.balance < 0) {
+// // if (amount <= 0) {
+//     System.out.println("A fee will be charged");  
+//     this.balance -= 35;
+//    }else if (amount < this.balace)
+//     this.balance -= amount;
+    //             if ((this.balane - ) >= amount) {
+    //                 System.out.rintln("$35 overdraft fee charged.");
+    //                 this.balanc -= 35.0;
+                
+    //             }  else 
+    //                 System.out.println("Withdrawl failed. Overdraft limit exceeded.");
+    //                 return;
+                
+    //             } 
+    //         } else {
+    //                 System.out.println("Withdrawl Failed. Insufficent balance");
+    //                 return;
+    //                 }
+    //             }
+
+
+
+    //         this.balance -= totalAmount;
+    //         System.out.println("$" + totalAmount + "successfully withdrawn. Current balance is" + this.balance);
+
+        
+
+            
+    
+    
+
+
+        
+
+      
+        // this.balance -= amount;
+        // if (this.balance < 0) {
+        //     this.balance -= 35;
+        // System.out.println("A $35 dollar fee will be attached to your account for the overdraft of your account");
+
+
+    public static void transfer(BankAccount bankAccount1, BankAccount bankAccount2, double amount) {
+        if (bankAccount1.getbalance() >= amount) {
+            bankAccount1.withdraw(amount);
+            bankAccount2.deposit(amount);
+            System.out.println("$" + amount + " has been transferred from " + bankAccount1 + " to " + bankAccount2);
+        } else {
+            System.out.println("Transfer failed. Insufficient funds in " + bankAccount1); }
+
+
+        }
+
+
+       
+ 
+    
+    
+    
+    
+    
+
+    
+    
+        
+
 
     // Create a mthod that will subtract a mothly fee from the balance
     // this method will take a double as a parameter
@@ -151,8 +299,13 @@ public class BankAccount {
     public static void interact(BankAccount account) {
         // get the choice from the menu method
         int choice = menu();
-        // create a scanner object
         Scanner input = new java.util.Scanner(System.in);
+
+
+
+        
+        // create a scanner object
+        
         // use that choice and run the method associated with that choice
 
         if (choice == 1) {
@@ -163,24 +316,59 @@ public class BankAccount {
         } else if (choice == 2) {
             System.out.println("How much would you like to withdraw?");
             double amount = input.nextDouble();
-            account.withdraw(amount);
+            if (amount >= account.getbalance()) {
+                account.overdraft(account, amount);
+            } else {
+                account.withdraw(amount);
+                account.printBalance();
+            }
+
+            
+            
+        
+    
+            
+                
+            
+
+            // account.printBalance();
+        
+        } else if (choice ==3) {
+            System.out.println("How much would you like to transfer?");
+            double amount = input.nextDouble();
+            System.out.println("From Which account?");
+            String fromAccount = input.next();
+            System.out.println("To which account?");
+            String toAccount = input.next();
+             
+            transfer(account, AccountExpiredException,  amount);
+
             account.printBalance();
-        } // place holder for choice 3
-        else if (choice == 4) {
+        
+        }  else if (choice == 4) {
             account.printBalance();
-        } else if (choice == 5) {
-            System.out.println("How many years? (Whole numbers only)");
-            int years = input.nextInt();
-            account.compoundInterest(account.getbalance(), years, account.interestRate, account.period);
-            account.printBalance();
-        } // place holder for choice 6
+        }
+        // } else if (choice == 5) {
+        //      System.out.println("How many years? (Whole numbers only)");
+        //     int years = input.nextInt();;
+        //     account.calculateCompoundInterest(principal, years, account.interestRate);
+        //     account.printBalance(); 
+        // } else if (choice == 6) {
+        //      System.out.println("How many years? (Whole numbers only)");
+        //      int years = input.nextInt();
+        //      account.simpleInterest(account.getbalance(), years, account.interestRate);
+        //      account.printBalance();
+        // place holder for choice 6
         else if (choice == 0) {
             System.out.println("Thank you for banking with Appas Bank");
         } else { // this would catch any invalid choices like
-            System.out.println("Invalid choice");
-        }
+            System.out.println("Invalid choice"); 
 
-    }
+
+
+        }
+        }
+    
 
     // Create a method that will calculate the interest on the balance using
     // compound interest
@@ -195,7 +383,10 @@ public class BankAccount {
 
     // P can be this.balance or getBalance() if you would like to use a getter
 
-    public void compoundInterest(double principal, int time, double rate, int annum) {
+    
+
+
+    public static void  calculateCompoundInterest(double principal, int time, double rate, int annum) {
         double amount = principal * Math.pow(1 + (rate / annum), annum * time);
         double roundedAmount = Math.round(amount * 100.0) / 100.0;
         double compinterest = amount - principal; // A-P
@@ -208,4 +399,22 @@ public class BankAccount {
         System.out.println("Total Amount after " + time + " years is: $" + roundedAmount);
     }
 
+
+    public void simpleInterest(double principal, int time, double rate) {
+        double amount = (principal * rate * time) / 100;
+        double roundedAmount = Math.round(amount * 100.0) / 100.0;
+        double simpleinterest = amount - principal; // A-P
+
+        System.out.println("Current Rate is: " + rate + "%");
+        System.out.println("Selected Time is: " + time + " years");
+        System.out.println("Simple Interest after " + time + " years is: $" + simpleinterest);
+        System.out.println("Total Amount after " + time + " years is: $" + roundedAmount);
+
+
+
+
+
+    } 
 }
+
+
