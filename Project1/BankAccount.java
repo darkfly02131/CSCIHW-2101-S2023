@@ -28,12 +28,10 @@ import java.util.Scanner;
  * Name, SSN
  */
 
-import javax.security.auth.login.AccountExpiredException;
 
 public class BankAccount {
 
-    private static BankAccount myAccount;
-    private static BankAccount yourAccount;
+    
     // Bank Account Parameters
     public String name;
     private double balance;
@@ -152,9 +150,7 @@ public class BankAccount {
             System.out.println("Withdrawl cancelled");
 
         
-        } 
-        
-       } else {
+        } } else {
         this.balance -= amount;
         
         System.out.println("Withdrawl of $" + amount + " successful");
@@ -165,78 +161,8 @@ public class BankAccount {
     }
 
 
-
+//Transfer method below
     
-    //*
-    // Scanner input = new Scanner(System.in);
-    //     int choice = input.nextInt();
-    // if (this.balance - amount <= 0) {
-    //     System.out.println("This will put you in the negatives. Proceed? If you proceed, a fee will be charged");
-    //     System.out.println("1. Yes");
-    //     System.out.println("2. No");
-        
-    // }else if (choice == 1) {
-    //     this.balance -= 35;
-    //     System.out.println("A $35 dollar fee will be attached to your account for the overdraft of your account");
-    
-
-    // } else if (choice == 2) {
-    //     System.out.println("Withdrawl cancelled");
-
-    // } else {
-    //     this.balance -= amount;
-    //     System.out.println("Withdrawl Successful");
-
-    // }*/
-
-        // int choice = menu()
-        // else if (choice == 1) { 
-
-    
-
-    //    double totalAmount = amount;
-    //     if (this.balance < amount) {
-    //         if (this.balance < 0) {
-// // if (amount <= 0) {
-//     System.out.println("A fee will be charged");  
-//     this.balance -= 35;
-//    }else if (amount < this.balace)
-//     this.balance -= amount;
-    //             if ((this.balane - ) >= amount) {
-    //                 System.out.rintln("$35 overdraft fee charged.");
-    //                 this.balanc -= 35.0;
-                
-    //             }  else 
-    //                 System.out.println("Withdrawl failed. Overdraft limit exceeded.");
-    //                 return;
-                
-    //             } 
-    //         } else {
-    //                 System.out.println("Withdrawl Failed. Insufficent balance");
-    //                 return;
-    //                 }
-    //             }
-
-
-
-    //         this.balance -= totalAmount;
-    //         System.out.println("$" + totalAmount + "successfully withdrawn. Current balance is" + this.balance);
-
-        
-
-            
-    
-    
-
-
-        
-
-      
-        // this.balance -= amount;
-        // if (this.balance < 0) {
-        //     this.balance -= 35;
-        // System.out.println("A $35 dollar fee will be attached to your account for the overdraft of your account");
-
 
     public static void transfer(BankAccount bankAccount1, BankAccount bankAccount2, double amount) {
         if (bankAccount1.getbalance() >= amount) {
@@ -249,28 +175,6 @@ public class BankAccount {
 
         }
 
-
-       
- 
-    
-    
-    
-    
-    
-
-    
-    
-        
-
-
-    // Create a mthod that will subtract a mothly fee from the balance
-    // this method will take a double as a parameter
-    // this method will subtract the fee from the balance
-    // Netflix subscription is $12.99
-    public void monthlyFee(double fee) {
-        withdraw(fee);
-    }
-
     // Create a method that will print a menu to the user
     // This is called a helper method / function
     public static int menu() {
@@ -282,7 +186,8 @@ public class BankAccount {
         System.out.println("3. Transfer"); // HomeWork
         System.out.println("4. Balance");
         System.out.println("5. Compound Interest");
-        System.out.println("6. Simple Interest"); // HomeWork
+        System.out.println("6. Simple Interest");
+        System.out.println("7. Create Savings Account");
         System.out.println("0. Exit");
         System.out.println("Please enter your choice: ");
         choice = input.nextInt();
@@ -296,80 +201,79 @@ public class BankAccount {
     // Create a method that will interact with the user based on their choice from
     // the menu method
     // This method will take a Bank Account as a parameter
-    public static void interact(BankAccount account) {
+    public static void interact(BankAccount account, BankAccount account2) {
         // get the choice from the menu method
         int choice = menu();
         Scanner input = new java.util.Scanner(System.in);
-
-
-
-        
-        // create a scanner object
-        
-        // use that choice and run the method associated with that choice
-
-        if (choice == 1) {
-            System.out.println("Please enter the amount you would like to deposit: ");
-            double amount = input.nextDouble();
-            account.deposit(amount);
-            account.printBalance();
-        } else if (choice == 2) {
-            System.out.println("How much would you like to withdraw?");
-            double amount = input.nextDouble();
-            if (amount >= account.getbalance()) {
-                account.overdraft(account, amount);
-            } else {
-                account.withdraw(amount);
+            if (choice == 1) {
+                System.out.println("Please enter the amount you would like to deposit: ");
+                double amount = input.nextDouble();
+                account.deposit(amount);
                 account.printBalance();
-            }
-
-            
-            
-        
-    
-            
+            } else if (choice == 2) {
+                System.out.println("How much would you like to withdraw?");
+                double amount = input.nextDouble();
+                if (amount >= account.getbalance()) {
+                    account.overdraft(account, amount);
+                } else {
+                    account.withdraw(amount);
+                    account.printBalance();
+                }
+            } else if (choice == 3) {
+                System.out.println("How much would you like to transfer?");
+                double amount = input.nextDouble();
+                System.out.println("From Which account?");
+                String fromAccount = input.next();
+                System.out.println("To which account?");
+                String toAccount = input.next();
                 
-            
+                transfer(account, account2,  amount);
 
-            // account.printBalance();
-        
-        } else if (choice ==3) {
-            System.out.println("How much would you like to transfer?");
-            double amount = input.nextDouble();
-            System.out.println("From Which account?");
-            String fromAccount = input.next();
-            System.out.println("To which account?");
-            String toAccount = input.next();
-             
-            transfer(account, AccountExpiredException,  amount);
+                account.printBalance();
+            }else if (choice == 4) {
+                    account.printBalance();
 
-            account.printBalance();
-        
-        }  else if (choice == 4) {
-            account.printBalance();
-        }
-        // } else if (choice == 5) {
-        //      System.out.println("How many years? (Whole numbers only)");
-        //     int years = input.nextInt();;
-        //     account.calculateCompoundInterest(principal, years, account.interestRate);
-        //     account.printBalance(); 
-        // } else if (choice == 6) {
-        //      System.out.println("How many years? (Whole numbers only)");
-        //      int years = input.nextInt();
-        //      account.simpleInterest(account.getbalance(), years, account.interestRate);
-        //      account.printBalance();
-        // place holder for choice 6
-        else if (choice == 0) {
-            System.out.println("Thank you for banking with Appas Bank");
-        } else { // this would catch any invalid choices like
-            System.out.println("Invalid choice"); 
-
-
-
-        }
-        }
+            }else if (choice == 5) {
+                System.out.println("How many years? (Whole numbers only)");
+                int years = input.nextInt();;
+                account.calculateCompoundInterest(account.balance, years, account.interestRate, account.period);
+                account.printBalance();
+         
+            } else if (choice == 6) {
+                System.out.println("How many years? (Whole numbers only)");
+                int years = input.nextInt();
+                
+                account.simpleInterest(account.balance, years, account.interestRate);
+                account.printBalance();
+            } else if (choice == 7) {
+                account.createSavingsAccount();
+                if (account.balance < 10000) {
+                    System.out.println("You do not have enough money to create a savings account. Please Try again when you do. >:)");
+            }  else {
+                System.out.println("Thank you! [0/]");
+            }
+            } else if (choice == 0) {
+                System.out.println("Thank you for banking with Appas Bank");
+            }   else {
+                System.out.println("Invalid choice");
+            }
+        } 
     
 
+
+                
+        
+              
+        // place holder for choice 6
+         
+
+
+        
+    
+       
+        
+    
+    
     // Create a method that will calculate the interest on the balance using
     // compound interest
     // P(1 + R/n)^(nt) - P
@@ -384,9 +288,54 @@ public class BankAccount {
     // P can be this.balance or getBalance() if you would like to use a getter
 
     
+    // 
+
+//Start of createSavingsAccount Method
+
+    public void createSavingsAccount() {
+        if (this.balance >= 10000) {
+            System.out.println("Would you like to create a savings account? (Y/N)");
+            Scanner input = new java.util.Scanner(System.in);
+            String choice = input.next();
+            if (choice.equalsIgnoreCase("Y")) {
+                System.out.println("What is the initial deposit?");
+                double initialDeposit = input.nextDouble();
+                System.out.println("What is the rate%?");
+                double rate = input.nextDouble();
+                System.out.println("What is the time?");
+                int time = input.nextInt();
+                System.out.println("What is the quarterly rate?");
+                int quart = input.nextInt();
+                System.out.println("What selection would you like? (1. Compound 2. Simple)");
+                int select = input.nextInt();
+                        if (select == 1) {
+                            System.out.println("How many years?");
+                            int years = input.nextInt();
+                            calculateCompoundInterest(initialDeposit, time, rate, quart);
+                        }else if (select == 2) {
+                            System.out.println("How many years?");
+                            int years = input.nextInt();
+                            simpleInterest(initialDeposit, time, rate);
+                        }else {
+                            System.out.println("F");
+                        }
+            
+            
+                    }else if (choice.equalsIgnoreCase("N")) {
+                System.out.println("Thank you for banking with Appas Bank");
+            } 
+            }
+            
+        }
+        
+
+    
+    
+    
 
 
-    public static void  calculateCompoundInterest(double principal, int time, double rate, int annum) {
+//Compound Interest Method
+    public  void  calculateCompoundInterest(double principal, int time, double rate, int annum) {
         double amount = principal * Math.pow(1 + (rate / annum), annum * time);
         double roundedAmount = Math.round(amount * 100.0) / 100.0;
         double compinterest = amount - principal; // A-P
@@ -397,18 +346,21 @@ public class BankAccount {
         System.out.println("Selected Time is: " + time + " years");
         System.out.println("Compound Interest after " + time + " years is: $" + compinterest);
         System.out.println("Total Amount after " + time + " years is: $" + roundedAmount);
+        System.out.println(rate);
+        ;
     }
-
-
+      
+//Simple Interest Method
     public void simpleInterest(double principal, int time, double rate) {
         double amount = (principal * rate * time) / 100;
         double roundedAmount = Math.round(amount * 100.0) / 100.0;
-        double simpleinterest = amount - principal; // A-P
+        double simpleinterest = principal + amount; // A-P6
 
         System.out.println("Current Rate is: " + rate + "%");
         System.out.println("Selected Time is: " + time + " years");
-        System.out.println("Simple Interest after " + time + " years is: $" + simpleinterest);
-        System.out.println("Total Amount after " + time + " years is: $" + roundedAmount);
+        System.out.println("Simple Interest after " + time + " years is: $" + roundedAmount);
+        System.out.println("Total Amount after " + time + " years is: $" + simpleinterest);
+        
 
 
 
@@ -416,5 +368,6 @@ public class BankAccount {
 
     } 
 }
+
 
 

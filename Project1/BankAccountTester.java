@@ -4,7 +4,7 @@ public class BankAccountTester {
     public static void main(String[] args) {
         BankAccount myAccount = new BankAccount("MOMO", 8675309);
 
-        System.out.println(myAccount.name);
+        // System.out.println(myAccount.name);
 
         BankAccount yourAccount = new BankAccount("Katara", 1234567, 10000, 101, "01/01/2000");
 
@@ -35,13 +35,17 @@ public class BankAccountTester {
         // yourAccount.deposit(100);
         System.out.println(yourAccount.getbalance());
 
+
+
         //int choice = BankAccount.menu();
         // System.out.println(choice);
+        myAccount.setbalance(10000.00);
+        yourAccount.setbalance(10000.00);
 
 
-        BankAccount.interact(yourAccount);
-        BankAccount.interact(myAccount);
+        BankAccount.interact(myAccount, yourAccount);
         
-        
-    }
+    }   
+
 }
+
