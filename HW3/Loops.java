@@ -16,9 +16,19 @@ public class Loops {
     //eeeat -> true
     //eeeeat -> false
 
+    //Q: buddy c, how would I make it so the code returns true if it's between 1 and 3?
+    //Q: So if I did a <= 4 && >= 1
+
+
     public static boolean loopE(String str){
-        return true; // <- this should be changed 
-    }
+        for (int i= 0 ; i < str.length(); i++) {
+            if ( str.charAt(i) == 'e' && i <= 3 && i >= 1) {
+                return true;
+            }
+         
+        }
+        return false;
+    } 
 
     //Given a String str and int n return a larger string
     //that is n copies of the original string 
@@ -26,8 +36,13 @@ public class Loops {
     //stringTimes("Code",2) ->"CodeCode"
     //stringTimes("Code",4) ->"CodeCodeCodeCode"
     public static String stringTimes(String str, int n) {
-        return null; // <- this should be changed 
+        for (int i = 0; i < n; i++) {
+            System.out.print(str);
+        }
+        return str;
     } 
+    
+
 
     //Create a method Given a string, return the string where all of the "z"
     //Have been removed. Except do not remove a z at the start
@@ -66,11 +81,28 @@ public class Loops {
     // Number: 0
     // TOTAL ENDED --- The total is 27.
     public static void sums(){
-    }
+            System.out.println("I will add up the numbers you give me....");
+            System.out.println("Number: ");
+            Scanner input = new Scanner(System.in);
+            int num = input.nextInt();
+            int total = 0;
+            while (num != 0) {
+                total += num;
+                System.out.println("The total so far is " + total + ".");
+                System.out.println("Number: ");
+                num = input.nextInt();
+            }
+            System.out.println("TOTAL ENDED --- The total is " + total + ".");
+        }
+    
 
     public static void main(String[] args) {
         // Add code to help test your methods here
+        //sums();
+        //System.out.print(stringTimes("Fuck", 2));
+        System.out.println(loopE("eeeeat"));
 
-    }
-    
+
+    }   
 }
+
