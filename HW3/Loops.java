@@ -14,29 +14,38 @@ public class Loops {
     //loopE("eat") -> true
     //eeat -> true
     //eeeat -> true
-    //eeeeat -> false
+    //eeeeat -> false/
+    // Donezo 
 
     //Q: buddy c, how would I make it so the code returns true if it's between 1 and 3?
     //Q: So if I did a <= 4 && >= 1
-
+// Q: How can I make a logical statement that says if it's between 1 and 3?
+//Q: Yeah, but that doesn't really help there buddy c.
+//Q: Is there a better way then saying string.length() <= 4 && string.length() >= 1?  
+// eeeat --> 1110
 
     public static boolean loopE(String str){
+        int count = 0;
         for (int i= 0 ; i < str.length(); i++) {
-            if ( str.charAt(i) == 'e' && i <= 3 && i >= 1) {
-                return true;
+            if (str.charAt(i) == 'e') {
+                count++;
+                
+                    }
+            if (count > 3) {
+                return false;
             }
-         
-        }
-        return false;
-    } 
 
-    //Given a String str and int n return a larger string
+
+         }
+            return count >= 1;
+        }
+    //Given a String str and int n return a larger string*****
     //that is n copies of the original string 
     //Ex.
     //stringTimes("Code",2) ->"CodeCode"
     //stringTimes("Code",4) ->"CodeCodeCodeCode"
     public static String stringTimes(String str, int n) {
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             System.out.print(str);
         }
         return str;
@@ -48,14 +57,37 @@ public class Loops {
     //Have been removed. Except do not remove a z at the start
     //or end
     //Ex.
+    // Q: Can you show me an example?
+    //A: Sure
+    //"zHelloz".substring(1, 5) -> "Hello"
+    //Q: 1 is 
     //stringZ("zHelloz") -> "zHelloz"
     //stringZ("nozthaznks") -> "nothanks"
     //stringZ("xksiazdjaasldzsajzasdz") -> "xksiadjaasldsajasdz"
+    // Create a method that returns the string where all of the z's have been removed except for the z at the start using the substring method
+    // Ex. ZHelloz -> ZHello
+    // Ex. nozthaznks -> nothanks
+    
     public static String stringZ(String str){
-        return null; // <- this should be changed 
-    }
+        for (int i = 1; i < str.length() - 1; i++) {
+            if (str.charAt(i) == 'z') {
+                str = str.substring(0, i) + str.substring(i + 1);
+                i--;
+            }
+        }
+        return str;
 
-    //Create a method that contains a while loop that allows for
+
+
+    }
+        
+
+
+
+
+
+
+    //Create a method that contains a while loop that allows for******
     //The user to input numbers until the number 0 is entered. Each time a number is 
     //entered the total will be summed and then prompted for a second number. 
     //NOTE: I require the use of scanner here to get each integer from the user
@@ -84,25 +116,30 @@ public class Loops {
             System.out.println("I will add up the numbers you give me....");
             System.out.println("Number: ");
             Scanner input = new Scanner(System.in);
-            int num = input.nextInt();
-            int total = 0;
+            long num = input.nextInt();
+            long total = 0;
             while (num != 0) {
                 total += num;
                 System.out.println("The total so far is " + total + ".");
                 System.out.println("Number: ");
-                num = input.nextInt();
+                num = input.nextLong();
             }
-            System.out.println("TOTAL ENDED --- The total is " + total + ".");
+            System.out.println("TOTAL ENDED --- The total is " + total + ". \n");
         }
     
 
     public static void main(String[] args) {
-        // Add code to help test your methods here
-        //sums();
-        //System.out.print(stringTimes("Fuck", 2));
-        System.out.println(loopE("eeeeat"));
 
+        sums();
+         // The longest word just for you.
+        System.out.print(stringTimes("Fool", 4));
+        System.out.println(" ");
+        System.out.println(loopE("eeeeat"));
+        System.out.println(stringZ("znozzzzzzzzzzthaznksz"));
 
     }   
 }
+
+//Q:Buddy C, why does stringtimes show three uses of the word Fool when it has 2 listed as a parameter. Is it because it lists the first one, and then repeats twice?
+//A
 
