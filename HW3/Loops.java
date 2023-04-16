@@ -140,6 +140,4 @@ public class Loops {
     }   
 }
 
-//Q:Buddy C, why does stringtimes show three uses of the word Fool when it has 2 listed as a parameter. Is it because it lists the first one, and then repeats twice?
-//A
 
