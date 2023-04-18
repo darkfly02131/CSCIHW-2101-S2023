@@ -88,19 +88,19 @@ public class Arrays {
             for (char c: alphabet) {
                 if (c == passwordArray[i]) {
                    answer += c;
-                   break;
+                   System.out.println(answer);
+                  
                    }
                 }
-            }
-        
-                
+            }return answer;
 
-               System.out.println(answer);
-               if(i == passwordArray.length - 1){
-                   break;
-               }
-            
-            }  return answer;
+
+    }
+    //Q:Buddy c, how would I make it so that it compares the password in the for loop
+    //Q: what would that look like buddy c?
+    //Q: How do I make it s
+    // for (int i = 0; i < passwordArray.length; i++) {
+
             
          //stopping here for today. I will continue tomorrow.
         
@@ -123,6 +123,11 @@ public class Arrays {
 
     // Hint 1: a temp Array is a helpful way to store variables for comparing 
     // Hint 2: 2 nested For loops should be all thats needed for the swapping logic
+
+
+//   s
+//   S
+//   S
     public static int[] sorter(int[] nums){
             int n = nums.length;
             int[] sortedArray = new int[n];
@@ -154,11 +159,13 @@ public class Arrays {
 
     public static void main(String[] args) {
         // Tester main method for your methods
-        System.out.println("Hello World!");
+        System.out.println("=======================================");
         Arraysums();
+        System.out.println("=======================================");
         sorter(new int[]{9,10,2,5,3,4,7,8});
-        System.out.println(" ");
-        bruteForce("ZZZZZ");
+        System.out.println("\n=======================================");
+        bruteForce("ZZZZ");
+        System.out.println("=======================================");
 
 
     }   
