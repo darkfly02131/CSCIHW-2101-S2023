@@ -69,7 +69,30 @@ public class Medals {
         };
         System.out.println("        Country    Gold    Silver    Bronze   Total");
 
+        
+        for (int i = 0; i < COUNTRIES; i++) {
+            int total = 0;
+            System.out.printf("%15s", countries[i]);
+            for (int j = 0; j < MEDALS; j++) {
+                System.out.printf("%8d", counts[i][j]);
+                total += counts[i][j];
+            }
+            System.out.printf("%8d\n", total);
+        }
+        System.out.println("          Total    Gold    Silver    Bronze   X");
+        
+        for (int i = 0; i < MEDALS; i++) {
+            int total = 0;
+            for (int j = 0; j < COUNTRIES; j++) {
+                total += counts[j][i];
+            }
+            System.out.printf("         %2d   ", total);
+        }
+//Q:Buddy c, what are the format modifiers for the printf statements?
+//A: %15s, %8d, %13s
+//Q: what's the modifier for tab?
 
+//A:
         // TODO
         // Print countries, counts, and row totals (IE total medals by country)
         // for formatting use these printf statements
@@ -98,6 +121,8 @@ public class Medals {
         // print the Array list and chart to look like this
         // Gold    Silver    Bronze
         // 4       4         5
+        
+
      
     }
     
