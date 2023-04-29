@@ -7,6 +7,15 @@ import java.util.Scanner;
 
 public class ArrayListPlayground {
     public static void main(String[] args) {
+    //Q: buddy c, what's the syntax for declaring an ArrayList?
+    //A: ArrayList<type> name = new ArrayList<type>();
+    //Q: buddy c, what's the syntax for adding an element to an ArrayList?
+    //Q: How would I declare an arraylist nums of 15 elements of type int?
+    //A: ArrayList<Integer> nums = new ArrayList<Integer>();
+    //Q: how do I add an element to an ArrayList?
+    //A: nums.add(5);
+    //Q: how would I set the value of the 5th element to 99?
+    //A:
     // Question 1
     // Write Java statements that do the following:
     // a) Declare an arrayList nums of 15 elements of type int.
@@ -15,6 +24,24 @@ public class ArrayListPlayground {
     // d) set the value of the 13th element to 15
     // d) set the value of the 2nd element to 6
     // d) Set the value of the 9th element of the array nums to the sum of the 13th and 2nd elements of the array nums.
+    ArrayList<Integer> nums = new ArrayList<Integer>();
+    for (int i = 0; i < 15; i++) {
+        nums.add(i);
+//Q: how do I sort an ArrayList?
+//A:
+
+    }
+    nums.set(4, 99);
+    nums.set(12, 15);
+    nums.set(1, 6);
+    nums.set(8, nums.get(12) + nums.get(1));
+    System.out.println(nums);
+    
+    //Q:buddy c, why am I getting a index out of bounds exception?
+    //Q: how do i set a value at a specific index?
+    //A:
+    //A:
+
     
 
 
@@ -24,9 +51,16 @@ public class ArrayListPlayground {
     // b) output each of the days of the week
     // c) output the days of the week that we have class 
     // d) change the arrayList to start on Sunday
+    ArrayList<String> days = new ArrayList<String>(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"));
+    System.out.println(days);
+    System.out.println(days.get(0));
+    days.set(0, "Sunday");
+    System.out.println(days);
+    }
+//Q: buddy c, what are the commands available for arraylists?
+//A: .add(), .get(), .set(), .remove(), .size(), .clear(), .contains(), .indexOf(), .isEmpty(), .lastIndexOf(), .toArray(), .toString(), .sort(), .subList(), .trimToSize()
 
-
-    // Question 3 
+// Question 3 
     // a) create an ArrayList and prompt the user for numbers to add to it until the number 0 is selected
     // b) return the largest and smallest number
     // c) return the ArrayList sorted smallest to largest
