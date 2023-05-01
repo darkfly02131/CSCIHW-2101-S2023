@@ -83,10 +83,10 @@ public class ArrayListPlayground {
         numbers.add(num);
     }
         numbers.remove(numbers.size() - 1);
-        Collections.sort(numbers);
-        System.out.println(numbers);
         System.out.println("The largest number is: " + Collections.max(numbers));
-        System.out.println("The smallest number is: " + Collections.min(numbers));
+        System.out.println("The smallest number is: " + Collections.min(numbers));  
+        Collections.sort(numbers);
+        System.out.println("Before divisibility check: " + numbers); 
             
                 
             if (numbers.size() % 3 != 0) {
@@ -96,7 +96,9 @@ public class ArrayListPlayground {
                     numbers.add(num);
                 }
                 Collections.sort(numbers);
-                System.out.println(numbers);      
+                System.out.println("After divisibility check: " + numbers); 
+                System.out.println("The largest number after the divisibility check is: " + Collections.max(numbers));
+                System.out.println("The smallest number after the divisibility check is: " + Collections.min(numbers));     
         
         }
     for(int i=0;i<numbers.size();i++)
