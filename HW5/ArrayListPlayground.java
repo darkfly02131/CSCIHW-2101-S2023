@@ -56,7 +56,7 @@ public class ArrayListPlayground {
     System.out.println(days.get(0));
     days.set(0, "Sunday");
     System.out.println(days);
-    }
+    
 //Q: buddy c, what are the commands available for arraylists?
 //A: .add(), .get(), .set(), .remove(), .size(), .clear(), .contains(), .indexOf(), .isEmpty(), .lastIndexOf(), .toArray(), .toString(), .sort(), .subList(), .trimToSize()
 
@@ -70,7 +70,65 @@ public class ArrayListPlayground {
     // 1 2 3
     // 4 5 6
     // 7 8 9
-    // NOTE: If the ArrayList is NOT divisable by 3 ask the user for more numbers and add them until it is
+    //Q: buddy c, how do I return the largest and smallest numbers in an ArrayList?
+    //A: Collections.sort(arraylist); arraylist.get(0); arraylist.get(arraylist.size()-1);
+
+    Scanner input = new Scanner(System.in);
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    int num = 1;
+
+    while (num != 0) {
+        System.out.println("Enter a number to add to the list (0 to stop): ");
+        num = input.nextInt();
+        numbers.add(num);
+    }
+        numbers.remove(numbers.size() - 1);
+        Collections.sort(numbers);
+        System.out.println(numbers);
+        System.out.println("The largest number is: " + Collections.max(numbers));
+        System.out.println("The smallest number is: " + Collections.min(numbers));
+            
+                
+            if (numbers.size() % 3 != 0) {
+                System.out.println("The ArrayList is not divisible by 3. Please enter more numbers to create a matrix:");
+                while (numbers.size() % 3 != 0) {
+                    num = input.nextInt();
+                    numbers.add(num);
+                }
+                Collections.sort(numbers);
+                System.out.println(numbers);      
+        
+        }
+    for(int i=0;i<numbers.size();i++)
+    {
+        System.out.print(numbers.get(i)+" ");
+        if((i+1)%3==0)
+        {
+            System.out.println();
+        }
+    }
+    }
+}
+
+// Q: How do i fix this?
+//A: while(numbers.size()%3!=0); {
+//     System.out.println("Please enter more numbers to create the matrix...");
+//     num = input.nextInt();
+//     numbers.add(num);
+// Q: How do I make it so the user can add more numbers to the ArrayList if there's not enough for create the matrix?
+//A: while(numbers.size()%3!=0); {
+    // System.out.println("Please enter more numbers to create the matrix...");
+    // num = input.nextInt();
+    // numbers.add(num);
+    // }
+
+
+//Q: How I prompt the user if they want to add more numbers
+//A:
+
+//A:
+    // Q: NOTE: If the ArrayList is NOT divisable by 3 ask the user for more numbers and add them until it is. How do I do this?
+    // A: while(numbers.size()%3!=0)
     // ArrayList Size: 7
     // Please enter 2 more numbers to create the matrix...
     // 
@@ -87,9 +145,10 @@ public class ArrayListPlayground {
     //         }
     //     }
         
-   
+   //Q: How do I check if it's divisible by 3?
+   //A: numbers.size()%3==0
 
-}
+
 
 
 
